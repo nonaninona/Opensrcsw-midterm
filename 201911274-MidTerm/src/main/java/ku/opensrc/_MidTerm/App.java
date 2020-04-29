@@ -19,10 +19,8 @@ public class App
     	Scanner console = new Scanner(System.in);
     	String input = console.next();
     	String[] words = input.split("\\|");
-    	
         JSONParser jsonParser = new JSONParser();
         
-        //파일 경로는 다를 수 있음
         try {
         	
 	    	FileReader reader = new FileReader("MidTerm.json");
