@@ -18,6 +18,7 @@ public class App
     	System.out.print("Enter the keyword you are looking for : ");
     	Scanner console = new Scanner(System.in);
     	String input = console.next();
+    	String[] words = input.split("\\|");
     	
         JSONParser jsonParser = new JSONParser();
         
@@ -30,8 +31,16 @@ public class App
         for(int i=0;i<infoArray.size();i++) {
         	JSONObject itemObject = (JSONObject) infoArray.get(i);
         	String data = (String)itemObject.get("item");
-        	if(data.indexOf(input) == -1)
+        	
+          	boolean isprint = false;
+        	for(int j=0;j<words.length;j++) {
+        		if(data.indexOf(words[j]) != -1)
+        			isprint = true;
+        	}
+        	if(!isprint) {
         		continue;
+        	}
+        	
         	System.out.println("item " + i + " : " + data);
         }
         console.close();
